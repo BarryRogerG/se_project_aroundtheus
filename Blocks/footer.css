@@ -1,0 +1,17 @@
+.footer page__section {
+    position: relative;
+  }
+  
+  .footer__copyright {
+    margin-top: 67px;
+    margin-bottom: 60px;
+  }
+
+  @media screen and (max-width: 480px) {
+    .footer__copyright {
+        margin-top: 48px;
+        margin-bottom: 36px;
+    }
+    
+  }
+  
