@@ -1,17 +1,21 @@
-.footer page__section {
-    position: relative;
-  }
-  
-  .footer__copyright {
-    margin-top: 67px;
-    margin-bottom: 60px;
-  }
+.footer {
+  position: relative;
+}
 
-  @media screen and (max-width: 480px) {
-    .footer__copyright {
-        margin-top: 48px;
-        margin-bottom: 36px;
-    }
-    
+.footer__copyright {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  color: #545454;
+  margin-top: 67px;
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 480px) {
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 16.94px;
+    margin-top: 48px;
+    margin-bottom: 36px;
   }
-  
+}
