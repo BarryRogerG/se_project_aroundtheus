@@ -1,18 +1,16 @@
 .gallery__cards {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, 282px);
-    grid-gap: 20px 17px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    }
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-gap: 20px 17px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
-    
 @media screen and (max-width: 568px) {
-        .gallery__cards {
-            padding: 0;
-            width: 100%;
-
-        }
-    }
+  .gallery__cards {
+    padding: 0;
+    width: 100%;
+  }
+}
