@@ -93,27 +93,36 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    margin: 30px 19px 36px;
   }
 
   .profile__description {
     max-width: 280px;
     text-align: center;
     width: 100%;
+    font-size: 14px;
+    line-height: 17px;
   }
 
   .profile__add-button {
     display: flex;
     width: 100%;
     justify-content: center;
-    margin: 36px 19px;
   }
 
   .profile__edit-button {
     margin-left: 10px;
+    width: 18px;
+    height: 18px;
   }
 
   .profile__title {
     font-size: 22px;
     max-width: 220px;
+    line-height: 38px;
+  }
+
+  .profile__image {
+    margin: auto;
   }
 }
