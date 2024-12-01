@@ -52,6 +52,7 @@
   border: 2px;
   border-radius: 2px;
   cursor: pointer;
+  padding: 0;
 }
 
 .profile__add-button:hover {
@@ -86,18 +87,18 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    margin-bottom: 36px;
   }
 
   .profile__info {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
     margin: 30px 19px 36px;
   }
 
   .profile__description {
-    max-width: 280px;
+    max-width: 282px;
     text-align: center;
     width: 100%;
     font-size: 14px;
@@ -106,8 +107,9 @@
 
   .profile__add-button {
     display: flex;
-    width: 100%;
     justify-content: center;
+    max-width: 282px;
+    margin: 0 auto;
   }
 
   .profile__edit-button {

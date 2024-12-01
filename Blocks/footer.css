@@ -18,4 +18,8 @@
     margin-top: 48px;
     margin-bottom: 36px;
   }
+
+  .footer {
+    justify-content: start;
+  }
 }
