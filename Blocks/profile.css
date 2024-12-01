@@ -45,11 +45,11 @@
 }
 
 .profile__add-button {
-  background: transparent url(../images/Add-Button.svg) center no-repeat;
+  background: transparent url(../images/plus-button.svg) center no-repeat;
   width: 150px;
   height: 50px;
   margin-left: auto;
-  border: 2px;
+  border: 2px solid #fff;
   border-radius: 2px;
   cursor: pointer;
   padding: 0;
@@ -98,7 +98,6 @@
   }
 
   .profile__description {
-    max-width: 282px;
     text-align: center;
     width: 100%;
     font-size: 14px;
@@ -108,6 +107,7 @@
   .profile__add-button {
     display: flex;
     justify-content: center;
+    width: 100%;
     max-width: 282px;
     margin: 0 auto;
   }
