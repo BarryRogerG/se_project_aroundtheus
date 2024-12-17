@@ -57,14 +57,14 @@
   width: 358px;
 }
 
-.modal__form input[type="text"] {
+.modal__input {
   width: 358px;
   display: block;
   margin-bottom: 30px;
   height: 28px;
 }
 
-.modal__form input[type="text"]:last-of-type {
+.modal__input:last-of-type {
   margin-bottom: 0;
 }
 
@@ -84,12 +84,22 @@
     width: 282px;
     height: 322px;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
   }
 
   .modal__form {
     width: 238px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
+    margin: 0 22px;
+  }
+
+  .modal__form input[type="text"] {
+    width: 238px;
+    display: block;
+  }
+
+  .modal__button {
+    width: 238px;
   }
 }
