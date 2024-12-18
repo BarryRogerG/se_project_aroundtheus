@@ -60,6 +60,8 @@
 .modal__input {
   width: 358px;
   display: block;
+  font-size: 14px;
+  font-weight: 400;
   margin-bottom: 30px;
   height: 28px;
   border: none;
