@@ -115,7 +115,7 @@
   .modal__close {
     width: 26px;
     height: 26px;
-    bottom: calc(100% + 15px);
+    bottom: calc(100% + 20px);
     left: calc(100% - 30px);
   }
 }
