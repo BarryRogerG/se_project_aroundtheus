@@ -27,6 +27,10 @@ const initialCards = [
 
 console.log(initialCards);
 
+/* -------------------------------------------------------------------------------------------------------------------------*/
+/*                                                       Elements                                                                                                  */
+/* -------------------------------------------------------------------------------------------------------------------------*/
+
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditCloseButton = profileEditModal.querySelector(".modal__close");
@@ -39,9 +43,27 @@ const profileDescriptionInput = document.querySelector(
 
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 
+/* -------------------------------------------------------------------------- */
+/*                                  functions                                 */
+/* -------------------------------------------------------------------------- */
+
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
 }
+/* -------------------------------------------------------------------------- */
+/*                               Event Handlers                               */
+/* -------------------------------------------------------------------------- */
+
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closePopup();
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Event Listener                               */
+/* -------------------------------------------------------------------------- */
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
@@ -53,9 +75,4 @@ profileEditCloseButton.addEventListener("click", () => {
   closePopup();
 });
 
-profileEditForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closePopup();
-});
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
