@@ -40,7 +40,11 @@
             ></button>
             <p class="profile__description">Explorer</p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            class="profile__add-button"
+            type="button"
+            id="profile-add-button"
+          ></button>
         </section>
         <section class="gallery page__section">
           <ul class="gallery__cards"></ul>
@@ -50,6 +54,7 @@
         <p class="footer__copyright">© 2022 Around The U.S.</p>
       </footer>
     </div>
+    <!-- ----------------------Edit-Profile-Modal ------------------------------------ -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="modal-close"></button>
@@ -57,17 +62,43 @@
         <form class="modal__form">
           <input
             class="modal__input"
-            name="title"
-            placeholder="Title"
-            id="modal-input-title"
+            name="name"
+            placeholder="Name"
+            type="text"
+            id="modal-input-name"
           />
           <input
             class="modal__input"
             name="description"
             placeholder="Description"
             id="modal-input-description"
+            type="text"
           />
           <button class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+    <!-- -------------------------------Add-Card-Modal---------------------------------------- -->
+    <div class="modal" id="add-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <p class="modal__heading">New Place</p>
+        <form class="modal__form" id="add-card-form">
+          <input
+            class="modal__input"
+            name="title"
+            placeholder="Title"
+            type="text"
+            id="modal-input-title"
+          />
+          <input
+            class="modal__input"
+            name="url"
+            placeholder="Image URL"
+            type="text"
+            id="modal-input-url"
+          />
+          <button class="button modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
