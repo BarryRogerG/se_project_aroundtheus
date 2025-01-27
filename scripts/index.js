@@ -54,7 +54,7 @@ const addCardModalForm = document.querySelector("#add-card-form");
 const galleryCardsEl = document.querySelector(".gallery__cards");
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
-
+const deleteButton = document.querySelector(".card__trash");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const nameInput = profileFormElement.querySelector("#modal-input-name");
