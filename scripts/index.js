@@ -54,7 +54,7 @@ const addCardModalForm = document.querySelector("#add-card-form");
 const galleryCardsEl = document.querySelector(".gallery__cards");
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
-const deleteButton = document.querySelector(".card__trash");
+const trashButton = document.querySelectorAll("#card__trash");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const nameInput = profileFormElement.querySelector("#modal-input-name");
@@ -76,6 +76,10 @@ function getCardElement(cardData) {
   const likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
+  });
+  const trashButton = cardElement.querySelector(".card__trash-button");
+  trashButton.addEventListener("click", () => {
+    cardElement.remove("cardData");
   });
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;

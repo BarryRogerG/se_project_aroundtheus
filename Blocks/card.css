@@ -44,7 +44,7 @@
   background-image: url(../images/heart-active.svg);
 }
 
-.card__trash {
+.card__trash-button {
   background: transparent url(../images/Trash.png);
   width: 18px;
   height: 19px;
@@ -52,6 +52,7 @@
   position: absolute;
   top: 18px;
   right: 15px;
+  cursor: pointer;
 }
 
 .card__like-button:hover {
