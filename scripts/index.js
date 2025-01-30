@@ -35,7 +35,6 @@ const profileEditCloseButton = profileEditModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileNameInput = document.querySelector("#modal-input-name");
-const profileFormElement = document.querySelector(".modal__form");
 const profileDescriptionInput = document.querySelector(
   "#modal-input-description"
 );
@@ -61,16 +60,15 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const previewCardCloseButton = previewCardModal.querySelector(".modal__close");
 const previewModalCaptionEl = previewCardModal.querySelector(".modal__caption");
-const nameInput = profileFormElement.querySelector("#modal-input-name");
+const nameInput = profileEditModal.querySelector("#modal-input-name");
 const cardTitleInput = document.querySelector("#modal-input-title");
 const cardUrlInput = document.querySelector("#modal-input-url");
 /* -------------------------------------------------------------------------- */
 /*                                  functions                                 */
 /* -------------------------------------------------------------------------- */
 
-function closePopup() {
-  profileEditModal.classList.remove("modal_opened");
-  addCardModal.classList.remove("modal_opened");
+function closePopup(popup) {
+  popup.classList.remove("modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -115,7 +113,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup();
+  closePopup(profileEditButton);
 }
 
 function handleaddCardSubmit(e) {
@@ -127,7 +125,7 @@ function handleaddCardSubmit(e) {
     link,
   });
   renderCard({ name, link }, galleryCardsEl);
-  closePopup();
+  closePopup(addCardModal);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -145,11 +143,11 @@ profileAddButton.addEventListener("click", () => {
 });
 
 profileEditCloseButton.addEventListener("click", () => {
-  closePopup();
+  closePopup(profileEditModal);
 });
 
 addCardModalCloseButton.addEventListener("click", () => {
-  closePopup();
+  closePopup(addCardModal);
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
