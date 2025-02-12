@@ -36,9 +36,10 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 }
 
 function setEventListeners(formEl, options) {
-  const { inputSelector } = options;
+  const { inputSelector, submitButtonSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  const submitButton = formEl.querySelector(".modal__button");
+  const submitButton = formEl.querySelector(submitButtonSelector);
+  toggleButtonState(inputEls, submitButton, options);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
@@ -65,31 +66,6 @@ function enableValidation(options) {
     // reset error messages
   });
 }
-
-const modals = document.querySelectorAll(".modal");
-
-const handleModalClose = (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    // evt.currentTarget is the element on which the listener was set
-    closePopup(evt.currentTarget);
-  }
-};
-
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", handleModalClose);
-});
-
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    const openModal = document.querySelector(".modal_opened");
-    if (openModal) {
-      openModal.classList.remove("modal_opened");
-    }
-  }
-});
 
 const config = {
   formSelector: ".modal__form",
