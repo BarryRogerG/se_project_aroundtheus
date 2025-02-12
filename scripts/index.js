@@ -53,7 +53,7 @@ const addCardModalForm = document.querySelector("#add-card-form");
 const galleryCardsEl = document.querySelector(".gallery__cards");
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
-const trashButton = document.querySelectorAll("#card__trash");
+const trashButton = document.querySelectorAll(".card__trash-button");
 const previewCardModal = document.querySelector("#preview-card-modal");
 const previewModalImageEl = previewCardModal.querySelector(".modal__image");
 const cardTemplate =
@@ -95,7 +95,7 @@ function getCardElement(cardData) {
   cardImageEl.addEventListener("click", () => {
     openPopup(previewCardModal);
     previewModalImageEl.src = cardData.link;
-    previewModalImageEl.alt = cardData.link;
+    previewModalImageEl.alt = cardData.name;
     previewModalCaptionEl.textContent = cardData.name;
   });
 
@@ -114,7 +114,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(profileEditButton);
+  closePopup(profileEditModal);
 }
 
 function handleaddCardSubmit(e) {
@@ -123,6 +123,7 @@ function handleaddCardSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ name, link }, galleryCardsEl);
   closePopup(addCardModal);
+  e.target.reset();
 }
 
 /* -------------------------------------------------------------------------- */

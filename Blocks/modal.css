@@ -107,6 +107,43 @@
   margin-top: 18px;
 }
 
+.modal__button_disabled {
+  background-color: #ffffff;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.modal__input_type_error {
+  border-bottom: 1px solid red;
+}
+
+.modal__error_visible {
+  color: red;
+  font-size: 12px;
+  display: block;
+  top: calc(100% - 25px);
+  position: absolute;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 480px) {
   .modal__container {
     width: 282px;
