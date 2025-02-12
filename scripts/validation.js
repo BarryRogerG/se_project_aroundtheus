@@ -22,14 +22,12 @@ function checkInputValidity(formEl, inputEl, options) {
   hideInputError(formEl, inputEl, options);
 }
 
+function hasInvalidInput(inputList) {
+  return !inputList.every((inputEl) => inputEl.validity.valid);
+}
+
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
-  let foundInvalid = false;
-  inputEls.forEach((inputEl) => {
-    if (!inputEl.validity.valid) {
-      foundInvalid = true;
-    }
-  });
-  if (foundInvalid) {
+  if (hasInvalidInput(inputEls)) {
     submitButton.classList.add(inactiveButtonClass);
     return (submitButton.disabled = true);
   }
@@ -82,6 +80,15 @@ const handleModalClose = (evt) => {
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", handleModalClose);
+});
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_opened");
+    if (openModal) {
+      openModal.classList.remove("modal_opened");
+    }
+  }
 });
 
 const config = {

@@ -132,18 +132,6 @@
   position: relative;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
 @media screen and (max-width: 480px) {
   .modal__container {
     width: 282px;
@@ -196,3 +184,14 @@
     font-size: 14px;
   }
 }
+
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible"
+};
+
+enableValidation(config);
