@@ -1,4 +1,5 @@
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const initialCards = [
   {
@@ -32,8 +33,24 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-const card = new Card(cardData, "#card-template");
-card.getView();
+function createCard(cardData, galleryCardsEl) {
+  const card = new Card(cardData, "#card-template");
+  const cardElement = createCard(cardData);
+  galleryCardsEl.prepend(cardElement);
+  return card.getView();
+}
+
+const editFormElement = document.querySelector("#add-card-form");
+
+/* ------------------------------- validation ------------------------------- */
+
+const options = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
 /* -------------------------------------------------------------------------------------------------------------------------*/
 /*                                                    Profiles  Elements                                                                                                  */
 /* -------------------------------------------------------------------------------------------------------------------------*/
@@ -88,7 +105,6 @@ function getCardElement(cardData) {
   trashButton.addEventListener("click", () => {
     cardElement.remove();
   });
-
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
