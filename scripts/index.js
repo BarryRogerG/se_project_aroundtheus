@@ -40,8 +40,6 @@ function createCard(cardData, galleryCardsEl) {
   return card.getView();
 }
 
-const editFormElement = document.querySelector("#add-card-form");
-
 /* ------------------------------- validation ------------------------------- */
 
 const options = {
@@ -51,6 +49,12 @@ const options = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
+
+const editFormElement = document.querySelector(".modal__form");
+
+const editFormValidator = new FormValidator(options, editFormElement);
+editFormValidator.enableValidation();
+
 /* -------------------------------------------------------------------------------------------------------------------------*/
 /*                                                    Profiles  Elements                                                                                                  */
 /* -------------------------------------------------------------------------------------------------------------------------*/
