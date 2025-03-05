@@ -40,21 +40,6 @@ function createCard(cardData, galleryCardsEl) {
   return card.getView();
 }
 
-/* ------------------------------- validation ------------------------------- */
-
-const options = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
-const editFormElement = document.querySelector(".modal__form");
-
-const editFormValidator = new FormValidator(options, editFormElement);
-editFormValidator.enableValidation();
-
 /* -------------------------------------------------------------------------------------------------------------------------*/
 /*                                                    Profiles  Elements                                                                                                  */
 /* -------------------------------------------------------------------------------------------------------------------------*/
@@ -93,6 +78,22 @@ const previewModalCaptionEl = previewCardModal.querySelector(".modal__caption");
 const nameInput = profileEditModal.querySelector("#modal-input-name");
 const cardTitleInput = document.querySelector("#modal-input-title");
 const cardUrlInput = document.querySelector("#modal-input-url");
+
+/* ------------------------------- validation ------------------------------- */
+
+const options = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const addCardFormValidator = new FormValidator(options, addCardModalForm);
+addCardFormValidator.enableValidation();
+
+const editFormValidator = new FormValidator(options, profileEditForm);
+editFormValidator.enableValidation();
 /* -------------------------------------------------------------------------- */
 /*                                  functions                                 */
 /* -------------------------------------------------------------------------- */
