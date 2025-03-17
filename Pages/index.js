@@ -1,5 +1,5 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import Card from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
 
 const initialCards = [
   {
@@ -33,13 +33,6 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-function createCard(cardData, galleryCardsEl) {
-  const card = new Card(cardData, "#card-template");
-  const cardElement = card.getView();
-  galleryCardsEl.prepend(cardElement);
-  return card.getView();
-}
-
 /* -------------------------------------------------------------------------------------------------------------------------*/
 /*                                                    Profiles  Elements                                                                                                  */
 /* -------------------------------------------------------------------------------------------------------------------------*/
@@ -71,14 +64,16 @@ const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
 const trashButton = document.querySelectorAll(".card__trash-button");
 const previewCardModal = document.querySelector("#preview-card-modal");
 const previewModalImageEl = previewCardModal.querySelector(".modal__image");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+
 const previewCardCloseButton = previewCardModal.querySelector(".modal__close");
 const previewModalCaptionEl = previewCardModal.querySelector(".modal__caption");
 const nameInput = profileEditModal.querySelector("#modal-input-name");
 const cardTitleInput = document.querySelector("#modal-input-title");
 const cardUrlInput = document.querySelector("#modal-input-url");
 
+const card = new Card(cardData, "#card-template");
+const cardElement = card.getView();
+galleryCardsEl.prepend(cardElement);
 /* ------------------------------- validation ------------------------------- */
 
 const options = {
@@ -97,36 +92,16 @@ editFormValidator.enableValidation();
 /* -------------------------------------------------------------------------- */
 /*                                  functions                                 */
 /* -------------------------------------------------------------------------- */
+const handleImageClick = (cardData) => {
+  previewModalImageEl.src = cardData._link;
+  previewModalImageEl.alt = cardData._name;
+  previewModalCaptionEl.textContent = cardData.name;
+  openModal(previewCardModal);
+};
 
 function getCardElement(cardData) {
-  return new Card(cardData, "#card-template").getView();
+  return new Card(cardData, "#card-template", handleImageClick).getView();
 }
-
-//function getCardElement(cardData) {
-//const cardElement = cardTemplate.cloneNode(true);
-//const cardImageEl = cardElement.querySelector(".card__image");
-//const cardTitleEl = cardElement.querySelector(".card__title");
-//const likeButton = cardElement.querySelector(".card__like-button");
-//likeButton.addEventListener("click", () => {
-// likeButton.classList.toggle("card__like-button_active");
-//});
-//const trashButton = cardElement.querySelector(".card__trash-button");
-//trashButton.addEventListener("click", () => {
-//cardElement.remove();
-//});
-//cardImageEl.src = cardData.link;
-//cardImageEl.alt = cardData.name;
-//cardTitleEl.textContent = cardData.name;
-
-//cardImageEl.addEventListener("click", () => {
-//openModal(previewCardModal);
-//previewModalImageEl.src = cardData.link;
-//previewModalImageEl.alt = cardData.name;
-//previewModalCaptionEl.textContent = cardData.name;
-//});
-
-//return cardElement;
-//}
 
 function renderCard(cardData, galleryCardsEl) {
   const cardElement = getCardElement(cardData);
