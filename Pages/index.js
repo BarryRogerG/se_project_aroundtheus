@@ -1,5 +1,5 @@
-import Card from "../scripts/Card.js";
-import FormValidator from "../scripts/FormValidator.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -71,9 +71,6 @@ const nameInput = profileEditModal.querySelector("#modal-input-name");
 const cardTitleInput = document.querySelector("#modal-input-title");
 const cardUrlInput = document.querySelector("#modal-input-url");
 
-const card = new Card(cardData, "#card-template");
-const cardElement = card.getView();
-galleryCardsEl.prepend(cardElement);
 /* ------------------------------- validation ------------------------------- */
 
 const options = {
@@ -93,10 +90,11 @@ editFormValidator.enableValidation();
 /*                                  functions                                 */
 /* -------------------------------------------------------------------------- */
 const handleImageClick = (cardData) => {
-  previewModalImageEl.src = cardData._link;
-  previewModalImageEl.alt = cardData._name;
+  previewModalImageEl.src = cardData.link;
+  previewModalImageEl.alt = cardData.name;
   previewModalCaptionEl.textContent = cardData.name;
   openModal(previewCardModal);
+  console.log(cardData);
 };
 
 function getCardElement(cardData) {
@@ -125,6 +123,7 @@ function handleaddCardSubmit(e) {
   renderCard({ name, link }, galleryCardsEl);
   closeModal(addCardModal);
   e.target.reset();
+  addCardFormValidator.toggleButtonState();
 }
 
 /* -------------------------------------------------------------------------- */
