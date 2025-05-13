@@ -13,13 +13,12 @@
       content="take a trip through the outback of America"
     />
     <title>Around The U.S.</title>
-    <link rel="stylesheet" href="pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/Around-the-U.S.svg"
+          src="<%=require('./images/Around-the-U.S.svg')%>"
           alt="Avatar"
           class="header__logo"
         />
@@ -27,7 +26,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau-1.jpg"
+            src="<%= require('./images/jacques-cousteau-1.jpg')%>"
             alt="Avatar"
             class="profile__image"
           />
