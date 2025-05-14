@@ -1,10 +1,10 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "../pages/index.css";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import Popup from "../scripts/Popup.js";
-import UserInfo from "../scripts/UserInfo.js";
-import Section from "../scripts/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Popup from "../components/Popup.js";
+import UserInfo from "../components/UserInfo.js";
+import Section from "../components/Section.js";
 
 const initialCards = [
   {
@@ -87,6 +87,11 @@ editFormValidator.enableValidation();
 const imagePreviewPopup = new PopupWithImage("#preview-card-modal");
 const editProfilePopup = new Popup({ popupSelector: "#profile-edit-modal" });
 const addCardPopup = new Popup({ popupSelector: "#add-card-modal" });
+
+// Set up event listeners for all popups
+imagePreviewPopup.setEventListeners();
+editProfilePopup.setEventListeners();
+addCardPopup.setEventListeners();
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",

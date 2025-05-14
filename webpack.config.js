@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
-    publicPath: "",
+    publicPath: "/",
   },
   target: ["web", "es5"],
   stats: "errors-only",
@@ -42,7 +42,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|webp|gif|woff(2)?|eot|ttf|otf)$/,
+        test: /\.(png|svg|jpg|jpeg|webp|gif|woff(2)?|eot|ttf|otf|ico)$/,
         type: "asset/resource",
       },
     ],
@@ -50,6 +50,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+      favicon: path.resolve(__dirname, "src/images/Around-the-U.S.svg"),
+      inject: true,
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
