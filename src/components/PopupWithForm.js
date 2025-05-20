@@ -29,8 +29,8 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  close() {
+  // Method to reset form - should be called only after successful submission
+  resetForm() {
     this._popupForm.reset();
-    super.close();
   }
 }

@@ -115,6 +115,7 @@ const addCardPopup = new PopupWithForm({
       link: formData.url,
     };
     cardSection.addItem(renderCard(newCard));
+    addCardPopup.resetForm();
     addCardPopup.close();
   },
 });
