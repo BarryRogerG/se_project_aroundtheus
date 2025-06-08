@@ -23,6 +23,13 @@ module.exports = {
     open: true,
     liveReload: true,
     hot: false,
+    proxy: {
+      "/v1": {
+        target: "https://around-api.en.tripleten-services.com",
+        pathRewrite: { "^/v1": "/v1" }, // Ensure the /v1 path segment is kept
+        changeOrigin: true,
+      },
+    },
   },
   module: {
     rules: [
