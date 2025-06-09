@@ -78,7 +78,7 @@ class Api {
 const api = new Api({
   baseUrl: "/v1",
   headers: {
-    authorization: "790ab8f4-0346-41b0-9a14-7e1682de378e",
+    authorization: "Bearer bb101eaa-1479-4fc1-8c77-e1038995d640",
     "Content-Type": "application/json",
   },
 });
