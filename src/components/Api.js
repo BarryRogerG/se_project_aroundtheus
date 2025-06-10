@@ -75,12 +75,4 @@ class Api {
   }
 }
 
-const api = new Api({
-  baseUrl: "/v1",
-  headers: {
-    authorization: "83afc0e8-d580-48dd-9720-21d5eeda6616",
-    "Content-Type": "application/json",
-  },
-});
-
-export default api;
+export default Api;
