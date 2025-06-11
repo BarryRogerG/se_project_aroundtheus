@@ -65,10 +65,10 @@
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  /*top: -45px;
-  right: -45px; */
-  bottom: calc(100% + 5px);
-  left: calc(100% + 5px);
+  top: 15px;
+  right: 15px;
+  bottom: unset;
+  left: unset;
 }
 
 .modal__heading {
@@ -132,7 +132,94 @@
   position: relative;
 }
 
+/* Styles for the delete-card-modal specific container */
+#delete-card-modal .modal__container {
+  width: 430px;
+  min-height: 181px;
+  padding: 34px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#delete-card-modal .modal__heading {
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 38px;
+}
+
+#delete-card-modal .modal__button {
+  width: 358px;
+  height: 50px;
+  margin-top: 0;
+  background-color: #000;
+  color: white;
+  border-radius: 2px;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+/* Styles for the update-avatar-modal specific container */
+#update-avatar-modal .modal__container {
+  width: 430px;
+  min-height: 272px;
+  padding: 34px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#update-avatar-modal .modal__heading {
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 54px;
+}
+
+#update-avatar-modal .modal__button {
+  width: 358px;
+  height: 50px;
+  margin-top: 0;
+  background-color: #000;
+  color: white;
+  border-radius: 2px;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 480px) {
+  .modal__close {
+    width: 26px;
+    height: 26px;
+    top: 10px;
+    right: 10px;
+  }
+
+  #delete-card-modal .modal__container {
+    width: 282px;
+    min-height: 200px;
+    padding: 25px 22px;
+  }
+
+  #delete-card-modal .modal__heading {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 25px;
+  }
+
+  #delete-card-modal .modal__button {
+    width: 238px;
+    height: 40px;
+    font-size: 14px;
+  }
+
   .modal__container {
     width: 282px;
     height: 322px;
@@ -167,11 +254,22 @@
     margin-left: 22px;
   }
 
-  .modal__close {
-    width: 26px;
-    height: 26px;
-    bottom: calc(100% + 20px);
-    left: calc(100% - 30px);
+  #update-avatar-modal .modal__container {
+    width: 282px;
+    min-height: 250px; /* Adjusted based on content in smaller screen */
+    padding: 25px 22px;
+  }
+
+  #update-avatar-modal .modal__heading {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 40px; /* Adjusted for smaller screen */
+  }
+
+  #update-avatar-modal .modal__button {
+    width: 238px;
+    height: 40px;
+    font-size: 14px;
   }
 }
 

@@ -39,6 +39,7 @@ const profileNameInput = document.querySelector("#modal-input-name");
 const profileDescriptionInput = document.querySelector(
   "#modal-input-description"
 );
+const profileImageElement = document.querySelector(".profile__image");
 
 const api = new Api({
   baseUrl: "/v1",
@@ -94,6 +95,7 @@ const imagePreviewPopup = new PopupWithImage("#preview-card-modal");
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
+  avatarSelector: ".profile__image",
 });
 
 const cardSection = new Section(
@@ -107,17 +109,64 @@ const cardSection = new Section(
 const editProfilePopup = new PopupWithForm({
   popupSelector: "#profile-edit-modal",
   handleFormSubmit: (formData) => {
-    console.log("Profile form submitted:", formData);
-    editProfilePopup.close();
+    editProfilePopup.renderLoading(true);
+    api
+      .setUserInfo(formData.name, formData.job)
+      .then((userInfoData) => {
+        userInfo.setUserInfo({
+          name: userInfoData.name,
+          job: userInfoData.about,
+        });
+        editProfilePopup.close();
+      })
+      .catch((err) => {
+        console.error("Error updating profile:", err);
+      })
+      .finally(() => {
+        editProfilePopup.renderLoading(false);
+      });
   },
 });
 
 const addCardPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: (formData) => {
-    console.log("Add card form submitted:", formData);
-    addCardPopup.resetForm();
-    addCardPopup.close();
+    addCardPopup.renderLoading(true);
+    api
+      .addCard(formData.name, formData.link)
+      .then((cardData) => {
+        const newCardElement = renderCard(cardData);
+        cardSection.addItem(newCardElement);
+        addCardPopup.resetForm();
+        addCardPopup.close();
+      })
+      .catch((err) => {
+        console.error("Error adding card:", err);
+      })
+      .finally(() => {
+        addCardPopup.renderLoading(false);
+      });
+  },
+});
+
+const updateAvatarPopup = new PopupWithForm({
+  popupSelector: "#update-avatar-modal",
+  handleFormSubmit: (formData) => {
+    updateAvatarPopup.renderLoading(true);
+    api
+      .setUserAvatar(formData.avatar)
+      .then((avatarInfo) => {
+        userInfo.setUserInfo({
+          avatar: avatarInfo.avatar,
+        });
+        updateAvatarPopup.close();
+      })
+      .catch((err) => {
+        console.error("Error updating avatar:", err);
+      })
+      .finally(() => {
+        updateAvatarPopup.renderLoading(false);
+      });
   },
 });
 
@@ -132,6 +181,7 @@ const deleteConfirmationPopup = new PopupWithConfirmation({
 imagePreviewPopup.setEventListeners();
 editProfilePopup.setEventListeners();
 addCardPopup.setEventListeners();
+updateAvatarPopup.setEventListeners();
 deleteConfirmationPopup.setEventListeners();
 
 profileEditButton.addEventListener("click", () => {
@@ -147,11 +197,21 @@ profileAddButton.addEventListener("click", () => {
   addCardPopup.open();
 });
 
+profileImageElement.addEventListener("click", () => {
+  formValidators["update-avatar"].resetValidation();
+  updateAvatarPopup.open();
+});
+
 /* -------------------------------------------------------------------------- */
 /*                               Page Initialization                           */
 /* -------------------------------------------------------------------------- */
 
 enableValidation(validationConfig);
+formValidators["update-avatar"] = new FormValidator(
+  validationConfig,
+  document.forms["update-avatar"]
+);
+formValidators["update-avatar"].enableValidation();
 
 // Load initial user info and cards from the API
 api
@@ -161,6 +221,7 @@ api
     userInfo.setUserInfo({
       name: userData.name,
       job: userData.about,
+      avatar: userData.avatar,
     });
 
     // Render initial cards

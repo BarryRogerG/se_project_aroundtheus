@@ -93,6 +93,27 @@
         </form>
       </div>
     </div>
+    <!-- ----------------------Update-Avatar-Modal ------------------------------------ -->
+    <div class="modal" id="update-avatar-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="update-avatar-form" name="update-avatar">
+          <label class="modal__label">
+            <input
+              class="modal__input"
+              name="avatar"
+              placeholder="Image URL"
+              type="url"
+              id="modal-input-avatar-url"
+              required
+            />
+            <span class="modal__error" id="modal-input-avatar-url-error"></span>
+          </label>
+          <button class="button modal__button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
     <!-- -------------------------------Add-Card-Modal---------------------------------------- -->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
