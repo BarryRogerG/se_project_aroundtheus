@@ -93,12 +93,33 @@
         </form>
       </div>
     </div>
+    <!-- ----------------------Update-Avatar-Modal ------------------------------------ -->
+    <div class="modal" id="update-avatar-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="update-avatar-form" name="update-avatar">
+          <label class="modal__label">
+            <input
+              class="modal__input"
+              name="avatar"
+              placeholder="Image URL"
+              type="url"
+              id="modal-input-avatar-url"
+              required
+            />
+            <span class="modal__error" id="modal-input-avatar-url-error"></span>
+          </label>
+          <button class="button modal__button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
     <!-- -------------------------------Add-Card-Modal---------------------------------------- -->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button class="modal__close" type="button"></button>
         <p class="modal__heading">New Place</p>
-        <form class="modal__form" id="add-card-modal" name="add-card">
+        <form class="modal__form" name="add-card">
           <label class="modal__label">
             <input
               class="modal__input"
@@ -147,6 +168,17 @@
 
         <img class="modal__image" src="" alt="" />
         <p class="modal__caption"></p>
+      </div>
+    </div>
+
+    <!-- ----------------------Delete-Card-Modal ------------------------------------ -->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <p class="modal__heading">Are you sure?</p>
+        <form class="modal__form" id="delete-card-form" name="delete-card">
+          <button class="button modal__button" type="submit">Yes</button>
+        </form>
       </div>
     </div>
   </body>

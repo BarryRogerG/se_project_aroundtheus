@@ -82,9 +82,9 @@
   white-space: nowrap;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 720px) {
   .profile {
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     margin-bottom: 36px;
