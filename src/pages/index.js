@@ -42,7 +42,7 @@ const profileDescriptionInput = document.querySelector(
 const profileImageElement = document.querySelector(".profile__image");
 
 const api = new Api({
-  baseUrl: "/v1",
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "83afc0e8-d580-48dd-9720-21d5eeda6616",
     "Content-Type": "application/json",
@@ -132,8 +132,9 @@ const addCardPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: (formData) => {
     addCardPopup.renderLoading(true);
+    console.log(formData);
     api
-      .addCard(formData.name, formData.link)
+      .addCard(formData.title, formData.url)
       .then((cardData) => {
         const newCardElement = renderCard(cardData);
         cardSection.addItem(newCardElement);
@@ -217,6 +218,7 @@ formValidators["update-avatar"].enableValidation();
 api
   .getAppInfo()
   .then(([userData, cardsData]) => {
+    console.log("Initial cards data:", cardsData);
     // Set user information
     userInfo.setUserInfo({
       name: userData.name,

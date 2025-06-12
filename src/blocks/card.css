@@ -21,6 +21,8 @@
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  background-color: lightgray;
+  min-height: 100px;
 }
 
 .card__description {
