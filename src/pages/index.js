@@ -39,6 +39,9 @@ const profileNameInput = document.querySelector("#modal-input-name");
 const profileDescriptionInput = document.querySelector(
   "#modal-input-description"
 );
+const profileImageEditButton = document.querySelector(
+  ".profile__image-edit-button"
+);
 const profileImageElement = document.querySelector(".profile__image");
 
 const api = new Api({
@@ -55,6 +58,18 @@ const api = new Api({
 
 function handleImageClick(cardData) {
   imagePreviewPopup.open(cardData);
+}
+
+function handleCardLike(card) {
+  const isLiked = card.isLiked();
+  api
+    .changeLikeCardStatus(card.getId(), !isLiked)
+    .then((data) => {
+      card.setLikeStatus(data.isLiked);
+    })
+    .catch((err) => {
+      console.error("Error updating like status:", err);
+    });
 }
 
 function handleCardDelete(cardId, cardElement) {
@@ -77,12 +92,14 @@ function handleCardDelete(cardId, cardElement) {
   });
 }
 
-function renderCard(cardData) {
+function renderCard(cardData, userId) {
   const card = new Card(
     cardData,
     "#card-template",
     handleImageClick,
-    handleCardDelete
+    handleCardDelete,
+    handleCardLike,
+    userId
   );
   return card.getView();
 }
@@ -111,11 +128,11 @@ const editProfilePopup = new PopupWithForm({
   handleFormSubmit: (formData) => {
     editProfilePopup.renderLoading(true);
     api
-      .setUserInfo(formData.name, formData.job)
+      .setUserInfo(formData.name, formData.description)
       .then((userInfoData) => {
         userInfo.setUserInfo({
           name: userInfoData.name,
-          job: userInfoData.about,
+          about: userInfoData.about,
         });
         editProfilePopup.close();
       })
@@ -198,7 +215,7 @@ profileAddButton.addEventListener("click", () => {
   addCardPopup.open();
 });
 
-profileImageElement.addEventListener("click", () => {
+profileImageEditButton.addEventListener("click", () => {
   formValidators["update-avatar"].resetValidation();
   updateAvatarPopup.open();
 });
@@ -215,9 +232,12 @@ formValidators["update-avatar"] = new FormValidator(
 formValidators["update-avatar"].enableValidation();
 
 // Load initial user info and cards from the API
+let userId;
+
 api
   .getAppInfo()
   .then(([userData, cardsData]) => {
+    userId = userData._id;
     console.log("Initial cards data:", cardsData);
     // Set user information
     userInfo.setUserInfo({
@@ -227,7 +247,7 @@ api
     });
 
     // Render initial cards
-    cardSection.renderItems(cardsData);
+    cardSection.renderItems(cardsData, userId);
   })
   .catch((err) => {
     console.error("Error loading initial data:", err);
