@@ -10,7 +10,7 @@ export default class Card {
     this._name = cardData.name;
     this._link = cardData.link;
     this._id = cardData._id; // Store the card ID
-    this._likes = cardData.likes;
+    this._likes = cardData.likes || [];
     this._ownerId = cardData.owner._id; // Store the owner ID
     this._userId = userId;
     this._cardSelector = cardSelector;
@@ -79,6 +79,8 @@ export default class Card {
     this._cardImageEl = this._cardElement.querySelector(".card__image");
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._name;
+
+    this._updateLikeView();
 
     // TODO: Hide the delete button if the current user is not the owner
     // You'll need the current user's ID for this.

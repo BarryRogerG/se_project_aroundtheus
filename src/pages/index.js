@@ -174,9 +174,7 @@ const updateAvatarPopup = new PopupWithForm({
     api
       .setUserAvatar(formData.avatar)
       .then((avatarInfo) => {
-        userInfo.setUserInfo({
-          avatar: avatarInfo.avatar,
-        });
+        userInfo.setUserInfo({ avatar: avatarInfo.avatar });
         updateAvatarPopup.close();
       })
       .catch((err) => {
@@ -205,7 +203,7 @@ deleteConfirmationPopup.setEventListeners();
 profileEditButton.addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();
   profileNameInput.value = currentUserInfo.name;
-  profileDescriptionInput.value = currentUserInfo.job;
+  profileDescriptionInput.value = currentUserInfo.about;
   formValidators["profile-edit"].resetValidation();
   editProfilePopup.open();
 });
