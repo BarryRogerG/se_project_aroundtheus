@@ -23,6 +23,9 @@ module.exports = {
     open: true,
     liveReload: true,
     hot: false,
+    client: {
+      webSocketURL: "ws://localhost:8080/ws",
+    },
     proxy: {
       "/v1": {
         target: "https://around-api.en.tripleten-services.com",
