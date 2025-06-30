@@ -43,8 +43,9 @@
   height: 18px;
   border: none;
 }
+
 .card__like-button_active {
-  background-image: url(../images/heart-active.svg);
+  background: transparent url(../images/heart-active.svg);
 }
 
 .card__trash-button {

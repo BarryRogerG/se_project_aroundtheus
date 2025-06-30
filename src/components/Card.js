@@ -40,9 +40,12 @@ export default class Card {
   }
 
   setLikeStatus(isLiked) {
-    this._likes = isLiked
-      ? [...this._likes, { _id: this._userId }]
-      : this._likes.filter((like) => like._id !== this._userId);
+    const currentlyLiked = this.isLiked();
+    if (isLiked && !currentlyLiked) {
+      this._likes.push({ _id: this._userId });
+    } else if (!isLiked && currentlyLiked) {
+      this._likes = this._likes.filter((like) => like._id !== this._userId);
+    }
     this._updateLikeView();
   }
 

@@ -45,7 +45,7 @@ const profileImageEditButton = document.querySelector(
 const profileImageElement = document.querySelector(".profile__image");
 
 const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  baseUrl: "/v1",
   headers: {
     authorization: "83afc0e8-d580-48dd-9720-21d5eeda6616",
     "Content-Type": "application/json",
