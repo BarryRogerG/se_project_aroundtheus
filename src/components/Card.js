@@ -49,7 +49,7 @@ export default class Card {
     this._updateLikeView();
   }
 
-  _updateLikeView() {
+  _updateLikeView() {s
     if (this.isLiked()) {
       this._likeButton.classList.add("card__like-button_active");
     } else {

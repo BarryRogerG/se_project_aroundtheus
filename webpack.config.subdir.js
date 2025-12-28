@@ -3,39 +3,20 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+// Configuration for deploying to a subdirectory (e.g., /aroundtheus)
+// Use this when deploying alongside another project on the same server
 module.exports = {
-  devtool: "inline-source-map",
   entry: {
     main: "./src/pages/index.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
-    publicPath: "/",
+    publicPath: "/aroundtheus/", // Change this to match your subdirectory
   },
   target: ["web", "es5"],
   stats: "errors-only",
-  mode: "development",
-  devServer: {
-    static: path.resolve(__dirname, "dist"),
-    compress: true,
-    port: 8080,
-    open: true,
-    liveReload: true,
-    hot: false,
-    client: {
-      webSocketURL: "ws://localhost:8080/ws",
-    },
-    // Proxy is not needed since we're using full URL now
-    // But keeping it for local development if needed
-    proxy: {
-      "/v1": {
-        target: "https://around-api.en.tripleten-services.com",
-        pathRewrite: { "^/v1": "/v1" },
-        changeOrigin: true,
-      },
-    },
-  },
+  mode: "production",
   module: {
     rules: [
       {
@@ -69,3 +50,4 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
 };
+

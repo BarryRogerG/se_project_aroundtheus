@@ -20,6 +20,10 @@ This project is a responsive website that showcases various locations around the
 3. Run `npm run dev` for development
 4. Run `npm run build` for production build
 
+## Live Demo
+
+The project is deployed and available at: **http://34.134.30.14/aroundtheus/**
+
 ## Project Features
 
 - Responsive design

@@ -1,10 +1,10 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  devtool: "inline-source-map",
   entry: {
     main: "./src/pages/index.js",
   },
@@ -15,27 +15,7 @@ module.exports = {
   },
   target: ["web", "es5"],
   stats: "errors-only",
-  mode: "development",
-  devServer: {
-    static: path.resolve(__dirname, "dist"),
-    compress: true,
-    port: 8080,
-    open: true,
-    liveReload: true,
-    hot: false,
-    client: {
-      webSocketURL: "ws://localhost:8080/ws",
-    },
-    // Proxy is not needed since we're using full URL now
-    // But keeping it for local development if needed
-    proxy: {
-      "/v1": {
-        target: "https://around-api.en.tripleten-services.com",
-        pathRewrite: { "^/v1": "/v1" },
-        changeOrigin: true,
-      },
-    },
-  },
+  mode: "production",
   module: {
     rules: [
       {
@@ -60,6 +40,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       favicon: path.resolve(__dirname, "src/images/Around-the-U.S.svg"),
@@ -69,3 +52,4 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
 };
+
